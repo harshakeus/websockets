@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+      <script type = "text/javascript">
+        
+         
+           
+
+            
+              
+               
+               // Let us open a web socket
+               var ws = new WebSocket("ws://localhost:9002");
+				
+               function subscribe(xx){
+                  var pp = 'sub '+xx;
+               ws.send(pp);
+               } 
+               
+               function publish(xx){
+               ws.send(xx);
+               }
+               
+               
+                
+               ws.onopen = function() {
+                  
+                  // Web Socket is connected, send data using send()
+                  ws.send("Message to send");
+                 
+               };
+				
+               ws.onmessage = function (evt) { 
+                  var received_msg = evt.data;
+                  console.log(evt.data);
+                  $('.dyn').append('<p>'+evt.data+'<p>');
+                  //document.getElementByClass('dyn').value;
+                  //alert("Message is received...");
+               };
+				
+               ws.onclose = function() { 
+                  
+                  // websocket is closed.
+                  alert("Connection is closed..."); 
+               };
+            
+         
+      </script>
+		
+   </head>
+   
+   <body>
+    <input type="text" id="configname" name="configname" />
+    <input type="button" value="Subscribe" 
+  onclick="subscribe(document.getElementById('configname').value)" />
+  
+  	<h2> please send the publish in format of channel number space message</h2>
+    <input type="text" id="publishval" name="publishval" />
+    <input type="button" value="publish" 
+  onclick="publish(document.getElementById('publishval').value)" />
+<div style="background:grey;width:500px;height:500px;">
+<p  class='dyn' ></p>
+</div>
+      
+   </body>
+</html>
