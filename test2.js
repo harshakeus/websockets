@@ -1,11 +1,12 @@
 var app = require('express')();
 var http = require('http').Server(app);
+var redis = require('redis');
 var nocache = require('nocache')
 app.use(nocache());
 var port = process.env.PORT || 3009;
-var server1 = require("redis").createClient();
-var server2 = require("redis").createClient();
-var server3 = require("redis").createClient();
+var server1 = redis.createClient('6379', 'redis');
+var server2 = redis.createClient('6379', 'redis');
+var server3 = redis.createClient('6379', 'redis');
 
 var server1load =0;
 var server2load =0;
