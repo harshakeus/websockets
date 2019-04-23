@@ -57,10 +57,10 @@ app.get('/', function(req, res){
         res.sendFile(__dirname + '/basic.html');
     }
     else if(k == 2){
-        res.sendFile(__dirname + '/basic1.html');
+        res.sendFile(__dirname + '/abc.html');
     }
     else{
-        res.sendFile(__dirname + '/basic2.html');
+        res.sendFile(__dirname + '/def.html');
     }
     
  
