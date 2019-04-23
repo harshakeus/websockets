@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  redis:
+    image: redis
+
+  websocketserver1:
+    container_name: websocketserver1
+    restart: always
+    image: hrshsunny7/websocketserver1
+    ports:
+      - "9001:9001"
+    links:
+       - redis
+  
+  websocketserver2:
+    container_name: websocketserver2
+    restart: always
+    image: hrshsunny7/websocketserver2
+    ports:
+      - "9002:9002"
+    links:
+       - redis
+  
+  websocketserver3:
+    container_name: websocketserver3
+    restart: always
+    image: hrshsunny7/websocketserver3
+    ports:
+      - "9003:9003"
+    links:
+      - redis
+  
+  websocketloadbalancer:
+    container_name: websocketloadbalancer
+    restart: always
+    image: hrshsunny7/websocketloadbalancer
+    ports:
+      - "3009:3009"
+    links:
+      - redis
+  

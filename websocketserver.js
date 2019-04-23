@@ -1,9 +1,10 @@
 const WebSocket = require('ws');
+var redis = require('redis');
 
 const wss = new WebSocket.Server({ port: 9001 });
-var client = require("redis").createClient();
-var subscriber1 = require("redis").createClient();
-var subscriber3 = require("redis").createClient();
+var client =  redis.createClient('6379', 'redis');
+var subscriber1 =  redis.createClient('6379', 'redis');
+var subscriber3 = redis.createClient('6379', 'redis');
 
 
 
