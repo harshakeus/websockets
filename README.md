@@ -12,3 +12,5 @@ now browse to localhost:3009
 
 first enter channel number and click on subscribe
 from now to publish, first enter the channel number space and message.
+
+** make sure that redis server is running in background
