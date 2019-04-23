@@ -1,6 +1,7 @@
 var app = require('express')();
 var http = require('http').Server(app);
-
+var nocache = require('nocache')
+app.use(nocache());
 var port = process.env.PORT || 3009;
 var server1 = require("redis").createClient();
 var server2 = require("redis").createClient();
